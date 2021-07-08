@@ -22,22 +22,22 @@ import {
   defalutMenus,
   defalutUserMenus,
   defalutMaterials,
-  images,
+  images
 } from './data';
 
 export default {
   name: 'Home',
-  data: function () {
+  data: function() {
     return {
       topologyConfigs: {
         license: {
           key: '企业版授权码',
-          value: '国产原创开源发展做出我们的贡献',
+          value: '国产原创开源发展做出我们的贡献'
         },
         logo: {
           img: 'http://topology.le5le.com/assets/img/favicon.ico',
           url: 'http://topology.le5le.com',
-          target: '_blank',
+          target: '_blank'
         },
         menus: defalutMenus,
         loginUrl: 'https://account.le5le.com',
@@ -55,21 +55,21 @@ export default {
           return [
             {
               label: '选项1',
-              value: 1,
+              value: 1
             },
             {
               label: '选项2',
-              value: 2,
+              value: 2
             },
             {
               label: '选项3',
-              value: 3,
-            },
+              value: 3
+            }
           ];
-        },
+        }
       },
       user: {
-        username: 'le5le',
+        username: 'le5le'
       },
       materials: {
         system: defalutMaterials,
@@ -77,43 +77,33 @@ export default {
         images,
         uploadUrl: '/api/file',
         uploadHeaders: {
-          Authorization: 'your token',
+          Authorization: 'your token'
         },
         uploadParams: {
-          mydata: 1,
-        },
+          mydata: 1
+        }
       },
-      data: {},
+      data: {}
     };
   },
-  created: function () {
-   
-  },
+  created: function() {},
   mounted() {
     // 请确保 7777777(类似数字).js 和 rg.js已下载，正确加载
     if (window.registerTools) {
       window.registerTools();
-
+      if (window.topologyTools) {
+        this.materials.system[0].list = window.topologyTools;
+      }
       //确保从预览页面返回是时清空存储
-        const json = sessionStorage.getItem('topologyData');
-        if (!this.$route.query.id && json) {
-          this.data = JSON.parse(json);
-          setTimeout(() => {
-            // 读到后清除对应 session
-            sessionStorage.removeItem('topologyData');
-          }, 200);
-        }
-        
-      this.materials.system[0].list = this.materials.system[0].list.concat(
-        window.topologyTools.map((el, index) => {
-          return {
-            data: el.data,
-            id: index,
-            name: 'rectangle',
-            icon: 't-icon t-rectangle',
-          };
-        })
-      );
+      const json = sessionStorage.getItem('topologyData');
+      if (!this.$route.query.id && json) {
+        this.data = JSON.parse(json);
+        setTimeout(() => {
+          // 读到后清除对应 session
+          sessionStorage.removeItem('topologyData');
+        }, 200);
+      }
+
     }
   },
   methods: {
@@ -136,7 +126,7 @@ export default {
           // Do sth. For example:
           this.$router.push({
             path: '/',
-            query: { component: '1' },
+            query: { component: '1' }
           });
           break;
 
@@ -145,7 +135,7 @@ export default {
           // Do sth. For example:
           this.$router.push({
             path: '/',
-            query: { id: e.params.id, component: '1' },
+            query: { id: e.params.id, component: '1' }
           });
           break;
 
@@ -168,21 +158,24 @@ export default {
         case 'preview':
           // 点击工具栏“预览”
 
-           // 点击工具栏“预览”
+          // 点击工具栏“预览”
 
           // 保存当前编辑数据到sessionStorage
-          sessionStorage.setItem('topologyData',JSON.stringify(window.topology.pureData()));
+          sessionStorage.setItem(
+            'topologyData',
+            JSON.stringify(window.topology.pureData())
+          );
           this.$router.push({
             path: '/preview',
-            query: { id: 'xxx', r: '1' },
+            query: { id: 'xxx', r: '1' }
           });
           break;
 
         // ...
         // ...
       }
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
