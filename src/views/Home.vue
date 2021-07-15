@@ -44,6 +44,7 @@ export default {
         signupUrl: 'https://account.le5le.com',
         userMenus: defalutUserMenus,
         dataOptionsFn: (pen, key, value) => {
+          console.log(pen, key, value);
           const keys = ['aaa', 'bbb'];
           const values = [
             {
