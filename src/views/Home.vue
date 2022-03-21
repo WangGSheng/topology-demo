@@ -17,22 +17,24 @@ import Vue from 'vue';
 import topology from 'topology-vue';
 // 需要导入topology-vue.css
 import 'topology-vue/topology-vue.css';
+
 Vue.use(topology);
 import {
   defalutMenus,
   defalutUserMenus,
   defalutMaterials,
+  userMaterials,
   images
 } from './data';
-
+// import { cytb } from '../selfData/changyong.js';
 export default {
   name: 'Home',
   data: function() {
     return {
       topologyConfigs: {
         license: {
-          key: '企业版授权码',
-          value: '国产原创开源发展做出我们的贡献'
+          key: 'le5le',
+          value: '248rIrkrIkrFrHriBarkrhrJr4rIrJr4rHrGrdr3r2Bo'
         },
         logo: {
           img: 'http://topology.le5le.com/assets/img/favicon.ico',
@@ -68,7 +70,7 @@ export default {
       },
       materials: {
         system: defalutMaterials,
-        user: [],
+        user: userMaterials,
         images,
         uploadUrl: '/api/file',
         uploadHeaders: {
@@ -89,6 +91,9 @@ export default {
       if (window.topologyTools) {
         this.materials.system[0].list = window.topologyTools;
       }
+
+      // this.materials.system[this.materials.system.length - 1].list = cytb;
+
       //确保从预览页面返回是时清空存储
       const json = sessionStorage.getItem('topologyData');
       if (!this.$route.query.id && json) {
@@ -140,6 +145,7 @@ export default {
         case 'save':
           // 导航菜单configs.menus里面定义的action
           // 比如这里表示保存文件
+          console.log(this.data);
           break;
         case 'addImageUrl':
           // 在“我的图片”里面添加了一张新图片
