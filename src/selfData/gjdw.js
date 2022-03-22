@@ -2492,7 +2492,7 @@ for (let i = 0; i < glyphs.length; i++) {
       paddingBottom: 10,
       name: 'image',
       iconFamily: 'sgcc',
-      iconColor: '#2f54eb',
+      iconColor: '#D60B23FF',
       fontClass: glyphs[i].font_class,
       icon: String.fromCharCode(glyphs[i].unicode_decimal)
     }
