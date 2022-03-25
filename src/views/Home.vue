@@ -12,13 +12,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
-// 导入topology-vue组件
-import topology from 'topology-vue';
-// 需要导入topology-vue.css
-import 'topology-vue/topology-vue.css';
-
-Vue.use(topology);
 import {
   defalutMenus,
   defalutUserMenus,
@@ -145,7 +138,7 @@ export default {
         case 'save':
           // 导航菜单configs.menus里面定义的action
           // 比如这里表示保存文件
-          console.log(this.data);
+          console.log(window.topology.toComponent());
           break;
         case 'addImageUrl':
           // 在“我的图片”里面添加了一张新图片
